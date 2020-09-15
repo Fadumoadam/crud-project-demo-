@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service'
 import { Employee } from 'src/app/models/employee.model';
+
+export interface PeriodicElement {
+  id: number;
+  name:string;
+  email: string;
+  phone: number;
+  edit: string; 
+  delte : string; 
+}
+
 @Component({
   selector: 'app-employess',
   templateUrl: './employess.component.html',
@@ -9,13 +19,13 @@ import { Employee } from 'src/app/models/employee.model';
 export class EmployessComponent implements OnInit {
   employees: Employee [];
   constructor( private employeeService:EmployeeService) { }
+  displayedColumns: string[] = ['id','name','email','phone','edit','delete'];
 
   ngOnInit(): void {
     this.employees = this.employeeService.onGet();
   }
   onDelete(id:number){
     this.employeeService.onDelete(id);
-
   }
 
 }

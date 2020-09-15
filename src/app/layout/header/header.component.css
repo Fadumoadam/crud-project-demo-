@@ -1,0 +1,15 @@
+.navbar {
+    justify-content: space-between;
+}
+a{
+    text-decoration: none;
+}
+.link{
+    margin-right:3rem;
+    color: #fff; 
+    text-transform: uppercase;
+}
+
+nav{
+    border-bottom: 10px solid #333;
+}

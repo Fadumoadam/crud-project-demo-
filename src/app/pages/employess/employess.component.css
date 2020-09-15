@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+}
+
+
+
+  .header{
+      display: flex; 
+      flex-direction: column;
+      justify-content:stretch;
+      align-items: center;
+      margin: 20px;
+  }
+
+  .header>h1{
+      font-weight: 600;
+      text-transform: uppercase;
+  }
