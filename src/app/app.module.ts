@@ -9,6 +9,7 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MetrialModule } from './metrial/metrial.module';
+import { ReuseableTableComponent } from './reuseable-table/reuseable-table.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MetrialModule } from './metrial/metrial.module';
     HeaderComponent,
     EmployessComponent,
     EditComponent,
+    ReuseableTableComponent,
   
     
   ],

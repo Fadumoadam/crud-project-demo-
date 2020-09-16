@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
     phone: this.fb.group({
         country: ['US'],
         number: ['']
-    }, {validators: phoneValidator,Validators:RequiredValidator}),
+    }, {validators: phoneValidator}),
     id : ['',Validators.required],
     email:['',Validators.required, Validators.email],
     name:['',Validators.required,Validators.minLength(2)]
@@ -46,6 +46,17 @@ export class EditComponent implements OnInit {
     }
   }
  
+  getErrorMessageId() {
+    if (this.profileForm.get('id').hasError('required')) {
+      return 'You must enter a value';
+    }
+  }
+
+  getErrorMessageName() {
+    if (this.profileForm.get('name').hasError('required')) {
+      return 'You must enter a value';
+    }
+  }
 
   getErrorMessage() {
     if (this.profileForm.get('email').hasError('required')) {
@@ -53,6 +64,10 @@ export class EditComponent implements OnInit {
     }
     return this.profileForm.get('email').hasError('email') ? 'Not a valid email' : '';
   }
+
+  
+
+
   
   onSubmit(form: NgForm){
     let employee: Employee = {
@@ -126,5 +141,4 @@ export class PhoneErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
       return !!(control.value && control.touched && !control?.parent?.valid);
   }
-
 }

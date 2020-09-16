@@ -1,21 +1,23 @@
+
 <div class="containera ">
     <h1>{{ header }}</h1>
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit(form)" #form="ngForm"  >
         <div>
-            <mat-form-field hintLabel="Max 10 characters" appearance="fill" required>
+            <mat-form-field  appearance="outline" color="accent" required>
                 <mat-label>Id</mat-label>
-                <input matInput #input maxlength="10" placeholder="1" formControlName="id" required >
+                <input matInput #input  placeholder="1" formControlName="id" required >
+                <mat-error *ngIf="profileForm.get('id').invalid">{{getErrorMessageId()}}</mat-error>
             </mat-form-field>
         </div>
         <div>
-        <mat-form-field hintLabel="Max 10 characters" appearance="fill" required >
+        <mat-form-field   appearance="outline" color="accent" required >
             <mat-label>Name</mat-label>
-            <input matInput #input maxlength="10" placeholder="John D." formControlName="name" required >
-            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+            <input matInput #input  placeholder="John D." formControlName="name" required >
+            <mat-error *ngIf="profileForm.get('name').invalid">{{getErrorMessageName()}}</mat-error>
         </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline" color="accent">
                 <mat-label>Enter your email</mat-label>
                 <input matInput placeholder="pat@example.com" formControlName="email" required >
                 <mat-error *ngIf="profileForm.get('email').invalid">{{getErrorMessage()}}</mat-error>
@@ -23,15 +25,15 @@
         </div>
         
             <div formGroupName="phone" >
-                <mat-form-field appearance="standard" class="phone_country">
-                    <mat-label>Country</mat-label>
-                    <mat-select formControlName="country" (selectionChange)="formatNumber()">
+                <mat-form-field appearance="outline" color="accent"  class="phone_country" class="country">
+                    
+                    <mat-select formControlName="country" (selectionChange)="formatNumber()" > 
                         <mat-option *ngFor="let countryCode of countyCodes" [value]="countryCode.code">
-                            {{countryCode.country}}
+                            {{countryCode.code}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field appearance="standard" class="phone_number">
+                <mat-form-field appearance="outline" class="phone" color="accent" > 
                     <mat-label>Phone Number</mat-label>
                     <input formControlName="number"
                            type="tel"
@@ -39,7 +41,8 @@
                            (input)="formatNumber()"
                            [errorStateMatcher]="phoneErrorMatcher"
                            matInput
-                           required >
+                           required 
+                           >
                     <mat-error *ngIf="!phoneGroup.valid">
                         Valid Phone Number: {{phoneHint}}
                     </mat-error>
@@ -47,7 +50,7 @@
                 </mat-form-field>
         </div>
         <div>
-            <button type="submit" mat-fab color="accent" [disabled]="form.invalid" >Save</button>
+            <button type="submit" mat-raised-button color="accent" class="submit" [disabled]="form.invalid" >Save</button>
         </div>
         </form>
         

@@ -2,4 +2,20 @@ h1{
     font-weight: 600;
     text-transform: capitalize;
     margin-top: 3rem;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+.mat-form-field,
+.submit {
+    width: 500px;
+
+}
+.country{
+    width: 60px;
+}
+.phone{
+    width: 440px;
 }
