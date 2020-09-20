@@ -4,11 +4,18 @@
 <a mat-raised-button routerLink="/employee/add/0" color="accent">Add New </a>
 </div>
 
-<reuseable-table [tableData]='employees' [tableColumns]='displayedColumns'></reuseable-table>
+<reuseable-table [tableData]='employees' 
+[tableColumns]='tableCols'
+ [tableColumnstwo]='displayedColumns' 
+ (valueDelete)='onDelete($event)'
+ (valueEdit)='onEdit($event)'
+ ></reuseable-table>
+
+
 
 </div>
   
-  
+
 
   
 

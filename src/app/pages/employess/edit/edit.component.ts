@@ -14,13 +14,13 @@ import {ErrorStateMatcher} from '@angular/material/core';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  id:number;
+
 
   header:string; 
   employee: Employee = {
     id:0, 
-    name: '',
-    email:'',
+    name: 'name',
+    email:'email',
     phone: 0
   
   }
@@ -28,13 +28,16 @@ export class EditComponent implements OnInit {
   profileForm = this.fb.group({
     phone: this.fb.group({
         country: ['US'],
-        number: ['']
+        number: []
     }, {validators: phoneValidator}),
-    id : ['',Validators.required],
-    email:['',Validators.required, Validators.email],
-    name:['',Validators.required,Validators.minLength(2)]
+    id : ['',[Validators.required]],
+    email:['',[Validators.required, Validators.email]],
+    name:['',[Validators.required,Validators.minLength(2)]]
    });
   
+  
+   id = this.profileForm.get('id').value;
+   
  
   constructor( private router: Router , private route: ActivatedRoute, private employeeService: EmployeeService , private fb: FormBuilder) { }
   
@@ -76,7 +79,7 @@ export class EditComponent implements OnInit {
       email: form.value.email, 
       phone: form.value.phone.number,
     }
-    console.log(employee);
+    console.log(this.id);
     
     if(this.id === 0){
       this.employeeService.onAdd(employee);
